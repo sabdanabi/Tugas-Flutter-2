@@ -10,6 +10,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
 
   bool checkBox1 = false;
+  bool _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -96,13 +97,24 @@ class _loginState extends State<login> {
                         ),
                       ),
                       Container(
-                        child: const Padding(
+                        child:Padding(
                           padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                           child: TextField(
-                            style: TextStyle(fontSize: 15),
+                            style: const TextStyle(fontSize: 15),
+                            obscureText: !_passwordVisible,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               hintText: 'Password ',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -116,7 +128,7 @@ class _loginState extends State<login> {
                                   shape: RoundedRectangleBorder( //to set border radius to button
                                       borderRadius: BorderRadius.circular(10)
                                   ),//content padding inside button
-                              ), child: const Text("Register",style: TextStyle(color: Colors.black),),))
+                              ), child: const Text("Register",style: TextStyle(color: Colors.white  ),),))
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top:5),
@@ -150,9 +162,9 @@ class _loginState extends State<login> {
                                 primary: Colors.white,
                                 shape: RoundedRectangleBorder( //to set border radius to button
                                     borderRadius: BorderRadius.circular(10),
-                                    side: const BorderSide(color: Colors.black),
+                                    side: const BorderSide(color: Colors.blueAccent),
                                 ),//content padding inside button
-                              ), label: const Text("Sign up with Google",style: TextStyle(color: Colors.black),),
+                              ), label: const Text("Sign up with Google",style: TextStyle(color: Colors.blueAccent),),
                                 icon: Image.asset(
                                   'assets/images/gogel.png',
                                   height: 20.0,
